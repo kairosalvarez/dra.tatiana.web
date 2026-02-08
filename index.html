@@ -6,7 +6,7 @@
   <title>Dra. Tatiana Mendoza | Medicina Estética & Regenerativa</title>
   <meta name="description" content="Endolifting (servicio estrella), armonización facial, bioestimulación, remodelación corporal, sueroterapia y bienestar integral." />
 
-  <!-- Fuente delgada y elegante (Google Fonts) -->
+  <!-- Fuente delgada -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -18,9 +18,6 @@
       --gold-dark:#B8923B;
 
       --bg:#ffffff;
-      --panel:#ffffff;
-      --card:#ffffff;
-
       --text:#1f1f1f;
       --muted:#6b6b6b;
       --line:rgba(0,0,0,.10);
@@ -32,7 +29,7 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.55;
@@ -41,30 +38,32 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 16px}
 
-    /* Header limpio, premium */
+    /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.88);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0; gap:12px;
+      padding:12px 0; gap:12px;
     }
+
     .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:240px;
+    }
+    .brand img{
+      height:34px;
+      width:auto;
+      display:block;
+    }
+    .brand .t{
       display:flex; flex-direction:column; line-height:1.1;
     }
-    .brand strong{
-      font-size:15px;
-      letter-spacing:.2px;
-      font-weight:500;
-    }
-    .brand span{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:300;
-    }
+    .brand .t strong{font-size:14px; font-weight:500; letter-spacing:.2px}
+    .brand .t span{font-size:12px; font-weight:300; color:var(--muted)}
 
     .nav{
       display:flex; align-items:center; gap:10px; flex-wrap:wrap;
@@ -86,7 +85,6 @@
       border-color:var(--line);
       background:rgba(0,0,0,.02);
     }
-
     .nav .cta{
       border:1px solid rgba(201,162,77,.35);
       background:linear-gradient(135deg,var(--gold),var(--gold-soft));
@@ -97,7 +95,7 @@
       box-shadow: 0 10px 22px rgba(201,162,77,.20);
     }
 
-    /* Mega panel (solo Servicios / Nosotros) */
+    /* Mega panel (Servicios / Nosotros) */
     .mega{
       display:none;
       border-top:1px solid var(--line);
@@ -139,31 +137,33 @@
       background:rgba(201,162,77,.08);
     }
 
-    /* Hero estilo "campaña" pero estético */
+    /* Hero slider (con imagen a la derecha, como “campaña” tipo Chevrolet) */
     .hero{
       border-bottom:1px solid var(--line);
       background:
         radial-gradient(900px 420px at 25% 0%, rgba(201,162,77,.18), transparent 60%),
-        radial-gradient(900px 420px at 80% 10%, rgba(232,216,168,.20), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.02), transparent 60%);
+        radial-gradient(900px 420px at 80% 10%, rgba(232,216,168,.20), transparent 60%);
     }
     .slider{ position:relative; padding:22px 0 28px; }
-
     .slide{
       display:none;
       border:1px solid rgba(201,162,77,.18);
       background:rgba(255,255,255,.92);
       border-radius:22px;
-      padding:22px;
-      min-height:250px;
+      padding:18px;
       box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .slide.active{display:grid}
+    .slide.active{display:block}
+
     .slide-grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:18px;
-      align-items:center;
+      align-items:stretch;
+    }
+    .slide-copy{
+      padding:10px 10px 12px;
     }
     .kicker{
       display:inline-flex;
@@ -177,7 +177,7 @@
     }
     .slide h1{
       margin:8px 0 10px;
-      font-size:40px;
+      font-size:38px;
       line-height:1.1;
       letter-spacing:-.6px;
       font-weight:500;
@@ -189,7 +189,6 @@
       font-size:15px;
       font-weight:300;
     }
-
     .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
     .btn{
       display:inline-flex;
@@ -209,16 +208,32 @@
       box-shadow: 0 10px 22px rgba(201,162,77,.18);
     }
 
-    .slide-aside{
-      border:1px solid rgba(0,0,0,.10);
+    .slide-media{
       border-radius:18px;
-      padding:14px;
+      border:1px solid rgba(0,0,0,.10);
+      overflow:hidden;
       background:#fff;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:300;
+      position:relative;
+      min-height:250px;
     }
-    .slide-aside strong{color:var(--text); font-weight:600}
+    .slide-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .media-badge{
+      position:absolute;
+      left:12px; bottom:12px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(201,162,77,.25);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:400;
+      backdrop-filter: blur(6px);
+    }
 
     .dots{display:flex; gap:8px; justify-content:center; margin-top:12px;}
     .dot{
@@ -227,6 +242,7 @@
       background:transparent; cursor:pointer;
     }
     .dot.active{background:rgba(0,0,0,.65)}
+
     .prevnext{
       position:absolute; inset:0;
       display:flex; align-items:center; justify-content:space-between;
@@ -245,12 +261,7 @@
 
     /* Chips */
     .cats{padding:28px 0 8px;}
-    .cats h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.2px;
-      font-weight:500;
-    }
+    .cats h2{margin:0 0 10px; font-size:18px; font-weight:500;}
     .chips{display:flex; gap:10px; flex-wrap:wrap}
     .chip{
       border:1px solid rgba(201,162,77,.28);
@@ -268,7 +279,7 @@
       border-color:rgba(201,162,77,.50);
     }
 
-    /* Cards catálogo */
+    /* Catálogo tipo “cards” */
     .section{padding:26px 0 48px}
     .grid{
       display:grid;
@@ -281,15 +292,28 @@
       border:1px solid rgba(0,0,0,.10);
       background:#fff;
       border-radius:18px;
-      padding:16px;
-      min-height:170px;
-      display:flex; flex-direction:column; justify-content:space-between;
+      overflow:hidden;
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      display:flex;
+      flex-direction:column;
+      min-height:260px;
     }
+    .card .thumb{
+      height:140px;
+      background:#f7f7f7;
+    }
+    .card .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .card .body{padding:14px 14px 12px}
     .card h3{margin:0 0 8px; font-size:16px; font-weight:600}
     .card p{margin:0; color:var(--muted); font-size:13px; font-weight:300}
     .card .mini{
-      margin-top:14px;
+      margin-top:auto;
+      padding:12px 14px 14px;
       display:flex; justify-content:space-between; align-items:center;
       gap:10px;
     }
@@ -304,9 +328,10 @@
     }
     .card.star{
       border-color: rgba(201,162,77,.60);
-      background:
-        radial-gradient(700px 240px at 20% 0%, rgba(201,162,77,.18), transparent 60%),
-        #fff;
+    }
+    .card.star .mini span{
+      color:var(--gold-dark);
+      font-weight:600;
     }
 
     /* Contact strip */
@@ -320,6 +345,7 @@
     }
     .contact-row strong{font-size:16px; font-weight:600}
     .contact-row small{color:var(--muted); font-weight:300}
+
     footer{
       border-top:1px solid var(--line);
       padding:18px 0;
@@ -357,8 +383,11 @@
 <header>
   <div class="container topbar">
     <div class="brand">
-      <strong>Dra. Tatiana Mendoza</strong>
-      <span>Medicina Estética & Regenerativa</span>
+      <img src="assets/logo.png" alt="Logo Dra. Tatiana Mendoza">
+      <div class="t">
+        <strong>Dra. Tatiana Mendoza</strong>
+        <span>Medicina Estética & Regenerativa</span>
+      </div>
     </div>
 
     <div class="nav">
@@ -415,6 +444,7 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="container slider">
       <div class="prevnext">
@@ -422,9 +452,10 @@
         <button id="next" aria-label="Siguiente">›</button>
       </div>
 
+      <!-- Slides con imágenes genéricas elegantes (placeholder) -->
       <div class="slide active" data-slide="0">
         <div class="slide-grid">
-          <div>
+          <div class="slide-copy">
             <div class="kicker">Servicio estrella</div>
             <h1>Endolifting</h1>
             <p>
@@ -432,24 +463,20 @@
               resultados progresivos y plan personalizado tras valoración.
             </p>
             <div class="btnrow">
-              <a class="btn primary" id="ctaHero1" href="#endolifting">Saber más</a>
+              <a class="btn primary" href="#endolifting">Saber más</a>
               <a class="btn" id="ctaHero1b" href="#">Agendar</a>
             </div>
           </div>
-          <div class="slide-aside">
-            <strong>Zonas comunes</strong>
-            <ul>
-              <li>Abdomen (medio, alto y bajo)</li>
-              <li>Espalda / zona posterior</li>
-              <li>Adiposidad localizada y celulitis (según valoración)</li>
-            </ul>
+          <div class="slide-media">
+            <img src="https://picsum.photos/seed/estetica1/980/640" alt="Imagen estética elegante">
+            <div class="media-badge">Resultados naturales · Acompañamiento</div>
           </div>
         </div>
       </div>
 
       <div class="slide" data-slide="1">
         <div class="slide-grid">
-          <div>
+          <div class="slide-copy">
             <div class="kicker">Facial</div>
             <h1>Armonización facial</h1>
             <p>
@@ -457,24 +484,20 @@
               Tratamientos ajustados a tu rostro y objetivos.
             </p>
             <div class="btnrow">
-              <a class="btn primary" href="#catalogo">Ver catálogo</a>
+              <a class="btn primary" href="#catalogo">Ver servicios</a>
               <a class="btn" id="ctaHero2b" href="#">Agendar</a>
             </div>
           </div>
-          <div class="slide-aside">
-            <strong>Incluye</strong>
-            <ul>
-              <li>Rinomodelación (y variantes)</li>
-              <li>Labios (volumen / perfilamiento / hidratación)</li>
-              <li>Ojeras, pómulos, mentón, cuello</li>
-            </ul>
+          <div class="slide-media">
+            <img src="https://picsum.photos/seed/estetica2/980/640" alt="Imagen estética elegante">
+            <div class="media-badge">Enfoque personalizado</div>
           </div>
         </div>
       </div>
 
       <div class="slide" data-slide="2">
         <div class="slide-grid">
-          <div>
+          <div class="slide-copy">
             <div class="kicker">Regenerativa</div>
             <h1>Calidad de piel</h1>
             <p>
@@ -486,13 +509,9 @@
               <a class="btn" id="ctaHero3b" href="#">Agendar</a>
             </div>
           </div>
-          <div class="slide-aside">
-            <strong>Opciones</strong>
-            <ul>
-              <li>Ácido poliláctico / hidroxiapatita de calcio</li>
-              <li>Terapias para tensado de piel</li>
-              <li>Sueros polilácticos</li>
-            </ul>
+          <div class="slide-media">
+            <img src="https://picsum.photos/seed/estetica3/980/640" alt="Imagen estética elegante">
+            <div class="media-badge">Seguridad · Valoración previa</div>
           </div>
         </div>
       </div>
@@ -505,6 +524,7 @@
     </div>
   </section>
 
+  <!-- CATEGORÍAS -->
   <section class="cats">
     <div class="container">
       <h2>Explora por categoría</h2>
@@ -520,93 +540,96 @@
     </div>
   </section>
 
+  <!-- ENDOLIFTING -->
   <section class="section" id="endolifting">
     <div class="container">
       <h2 style="margin:0; font-weight:500;">⭐ Endolifting — Servicio estrella</h2>
-      <p style="margin:8px 0 0; color:var(--muted); max-width:90ch;">
+      <p style="margin:8px 0 0; color:var(--muted); max-width:95ch;">
         Procedimiento avanzado orientado a tensado de piel y apoyo en remodelación de zonas específicas,
         con valoración previa para definir el plan recomendado.
       </p>
     </div>
   </section>
 
+  <!-- CATÁLOGO -->
   <section class="section" id="catalogo">
     <div class="container">
-      <h2 style="margin:0; font-weight:500;">Catálogo de servicios</h2>
-      <p style="margin:8px 0 0; color:var(--muted); max-width:90ch;">
-        Sin precios. Basado en el portafolio. Endolifting es el servicio protagonista.
+      <h2 style="margin:0; font-weight:500;">Servicios</h2>
+      <p style="margin:8px 0 0; color:var(--muted); max-width:95ch;">
+        Catálogo sin precios. Endolifting es el servicio protagonista.
       </p>
 
       <div class="grid" id="grid">
         <article class="card star" data-cat="estrella corporal">
-          <div>
+          <div class="thumb"><img src="https://picsum.photos/seed/endolifting/900/520" alt="Endolifting"></div>
+          <div class="body">
             <h3>Endolifting</h3>
             <p>Servicio estrella: tensado de piel y apoyo en remodelación (según valoración).</p>
           </div>
           <div class="mini">
-            <span style="color:var(--gold-dark); font-weight:600;">Estrella</span>
+            <span>Estrella</span>
             <a class="more" href="#contacto">Agendar</a>
           </div>
         </article>
 
         <article class="card" data-cat="facial">
-          <div><h3>Rinomodelación</h3><p>Armonización nasal con enfoque personalizado.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/rinomodelacion/900/520" alt="Rinomodelación"></div>
+          <div class="body"><h3>Rinomodelación</h3><p>Armonización nasal con enfoque personalizado.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="facial">
-          <div><h3>Labios</h3><p>Volumen, perfilamiento e hidratación según objetivo.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/labios/900/520" alt="Labios"></div>
+          <div class="body"><h3>Labios</h3><p>Volumen, perfilamiento e hidratación según objetivo.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="facial">
-          <div><h3>Mentón · Pómulos · Ojeras</h3><p>Proyección y balance facial natural.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/facial1/900/520" alt="Facial"></div>
+          <div class="body"><h3>Mentón · Pómulos · Ojeras</h3><p>Proyección y balance facial natural.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="regenerativa">
-          <div><h3>Bioestimulación</h3><p>Protocolos para mejorar calidad de piel progresivamente.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/regenerativa1/900/520" alt="Regenerativa"></div>
+          <div class="body"><h3>Bioestimulación</h3><p>Protocolos para mejorar calidad de piel progresivamente.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="regenerativa">
-          <div><h3>Ácido poliláctico</h3><p>Estimulación profunda (rostro / manos / tercio medio).</p></div>
-          <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
-        </article>
-
-        <article class="card" data-cat="regenerativa">
-          <div><h3>Hidroxiapatita de calcio</h3><p>Soporte y mejora progresiva (según valoración).</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/polilactico/900/520" alt="Ácido poliláctico"></div>
+          <div class="body"><h3>Ácido poliláctico</h3><p>Estimulación profunda (rostro / manos / tercio medio).</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="corporal">
-          <div><h3>Adiposidad · Celulitis</h3><p>Remodelación corporal con enfoque médico.</p></div>
-          <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
-        </article>
-
-        <article class="card" data-cat="corporal">
-          <div><h3>Lipopapada</h3><p>Definición de contorno (según valoración).</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/corporal1/900/520" alt="Corporal"></div>
+          <div class="body"><h3>Adiposidad · Celulitis</h3><p>Remodelación corporal con enfoque médico.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="sueros">
-          <div><h3>Sueroterapia</h3><p>Reparador, energizante, revitalizador, detox e inmunológico.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/sueros1/900/520" alt="Sueroterapia"></div>
+          <div class="body"><h3>Sueroterapia</h3><p>Reparador, energizante, revitalizador, detox e inmunológico.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="bienestar">
-          <div><h3>Bienestar integral</h3><p>Masajes, reflexología, bambuterapia y más.</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/bienestar1/900/520" alt="Bienestar"></div>
+          <div class="body"><h3>Bienestar integral</h3><p>Masajes, reflexología, bambuterapia y más.</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
 
         <article class="card" data-cat="rejuvenecimiento facial">
-          <div><h3>Rejuvenecimiento no quirúrgico</h3><p>Toxina botulínica y procedimientos (según valoración).</p></div>
+          <div class="thumb"><img src="https://picsum.photos/seed/botox1/900/520" alt="Rejuvenecimiento"></div>
+          <div class="body"><h3>Rejuvenecimiento no quirúrgico</h3><p>Toxina botulínica y procedimientos (según valoración).</p></div>
           <div class="mini"><span></span><a class="more" href="#contacto">Agendar</a></div>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- NOSOTROS -->
   <section class="section" id="acerca">
     <div class="container">
       <h2 style="margin:0; font-weight:500;">Nosotros</h2>
@@ -617,6 +640,7 @@
     </div>
   </section>
 
+  <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container">
       <h2 style="margin:0; font-weight:500;">Preguntas frecuentes</h2>
@@ -637,6 +661,7 @@
     </div>
   </section>
 
+  <!-- CONTACTO -->
   <section class="contact-strip" id="contacto">
     <div class="container contact-row">
       <div>
@@ -672,7 +697,7 @@
   document.getElementById("ctaBottom").href = wa;
   document.getElementById("waFloat").href = wa;
 
-  // Mega menu (solo servicios / nosotros)
+  // Mega menu
   const megaMap = {
     servicios: document.getElementById("mega-servicios"),
     nosotros: document.getElementById("mega-nosotros"),
@@ -706,7 +731,7 @@
   dots.forEach(d=>d.addEventListener("click", ()=>show(parseInt(d.getAttribute("data-dot"),10))));
   setInterval(()=>show(idx+1), 7000);
 
-  // Filtro catálogo (chips) + links del mega
+  // Filtro catálogo
   const cards = Array.from(document.querySelectorAll("#grid .card"));
   const chips = Array.from(document.querySelectorAll(".chip"));
   function setFilter(f){

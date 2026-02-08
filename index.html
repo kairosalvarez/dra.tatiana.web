@@ -1,170 +1,516 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dra. Tatiana Mendoza | Medicina Estética</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dra. Tatiana Mendoza | Medicina Estética Regenerativa</title>
+  <meta name="description" content="Medicina estética avanzada y regenerativa. Endolifting (servicio estrella), armonización facial, bioestimulación, remodelación corporal y sueroterapia." />
 
-<style>
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#15151a;
+      --text:#f4f4f6;
+      --muted:#c9c9d1;
+      --line:rgba(255,255,255,.10);
+      --gold:#d4af37;
+      --gold2:#f0d98c;
+      --white:#ffffff;
+    }
 
-body{
-margin:0;
-font-family: Arial, Helvetica, sans-serif;
-background:#fafafa;
-color:#333;
-}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg,#0b0b0e 0%, #101017 60%, #0b0b0e 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
 
-header{
-background:#111;
-color:white;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:1100px; margin:0 auto; padding:0 18px; }
 
-header h1{
-margin:0;
-font-size:22px;
-}
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15,15,18,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .brand strong{ font-size:16px; letter-spacing:.2px; }
+    .brand span{ font-size:12px; color:var(--muted); }
 
-nav a{
-color:white;
-margin-left:15px;
-text-decoration:none;
-}
+    nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      color:var(--text);
+      border-color:var(--line);
+      background: rgba(255,255,255,.04);
+    }
 
-.hero{
-background:linear-gradient(120deg,#111,#444);
-color:white;
-padding:80px 20px;
-text-align:center;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition:.15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn-primary{
+      background: linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#15151a;
+      border-color: rgba(0,0,0,.2);
+    }
 
-.hero h2{
-font-size:40px;
-margin-bottom:10px;
-}
+    /* Hero */
+    .hero{
+      padding:70px 0 44px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(900px 360px at 30% 0%, rgba(212,175,55,.22), transparent 60%),
+        radial-gradient(700px 300px at 80% 10%, rgba(240,217,140,.14), transparent 60%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:24px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:42px;
+      line-height:1.1;
+      letter-spacing:-.5px;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:60ch;
+    }
+    .hero .cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+    .hero-card h3{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--gold2);
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .hero-card ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-button{
-background:#d4af37;
-border:none;
-padding:12px 22px;
-font-size:16px;
-cursor:pointer;
-margin-top:10px;
-}
+    /* Sections */
+    section{ padding:56px 0; }
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      max-width:62ch;
+      font-size:14px;
+    }
 
-section{
-padding:60px 20px;
-max-width:1000px;
-margin:auto;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); font-size:14px; }
 
-.star{
-background:#f3f3f3;
-border-left:6px solid #d4af37;
-}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      margin: 10px 8px 0 0;
+    }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    /* Endolifting highlight */
+    .highlight{
+      border:1px solid rgba(212,175,55,.35);
+      background:
+        radial-gradient(900px 360px at 10% 20%, rgba(212,175,55,.16), transparent 60%),
+        rgba(255,255,255,.03);
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-.card{
-background:white;
-padding:20px;
-border-radius:6px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
+    /* Services */
+    .span-6{ grid-column: span 6; }
+    .span-4{ grid-column: span 4; }
+    .span-12{ grid-column: span 12; }
 
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
+    /* Contact */
+    .contact{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .contact small{ color:var(--muted); }
 
-</style>
+    footer{
+      border-top:1px solid var(--line);
+      padding:22px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* WhatsApp floating */
+    .wa-float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      border-radius: 999px;
+      padding: 12px 14px;
+      background: #25D366;
+      color: #0b0b0e;
+      font-weight: 800;
+      border: 0;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .wa-float:hover{ transform: translateY(-1px); }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .span-6, .span-4 { grid-column: span 12; }
+      .hero h1{ font-size:34px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>Dra. Tatiana Mendoza</h1>
-<nav>
-<a href="#endolifting">Endolifting</a>
-<a href="#servicios">Servicios</a>
-<a href="#contacto">Contacto</a>
-</nav>
-</header>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <strong>Dra. Tatiana Mendoza</strong>
+        <span>Medicina Estética & Regenerativa</span>
+      </div>
 
-<section class="hero">
-<h2>Belleza regenerativa con respaldo médico</h2>
-<p>Medicina estética avanzada para resultados naturales y seguros.</p>
-<button>Agenda tu valoración</button>
-</section>
+      <nav>
+        <a href="#endolifting">Endolifting</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="endolifting" class="star">
-<h2>⭐ Endolifting — Servicio Estrella</h2>
-<p>
-Tecnología avanzada para tensado de piel, reducción de adiposidad localizada y
-remodelación corporal sin cirugía. Resultados progresivos, seguros y visibles.
-</p>
-<button>Quiero mi valoración</button>
-</section>
+  <main>
 
-<section id="servicios">
-<h2>Servicios Especializados</h2>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Belleza regenerativa con respaldo médico</h1>
+          <p>
+            Tratamientos estéticos avanzados y medicina regenerativa para resultados
+            naturales, seguros y personalizados.
+          </p>
 
-<div class="services">
+          <div class="cta">
+            <a class="btn btn-primary" id="ctaHero" href="#">Agenda tu valoración</a>
+            <a class="btn" href="#endolifting">Ver servicio estrella</a>
+          </div>
 
-<div class="card">
-<h3>Armonización Facial</h3>
-<p>Rinomodelación, labios, pómulos y perfilamientos personalizados.</p>
-</div>
+          <div style="margin-top:14px;">
+            <span class="pill">Enfoque personalizado</span>
+            <span class="pill">Resultados naturales</span>
+            <span class="pill">Seguridad y acompañamiento</span>
+          </div>
+        </div>
 
-<div class="card">
-<h3>Medicina Regenerativa</h3>
-<p>Bioestimulación profunda para rejuvenecimiento progresivo.</p>
-</div>
+        <div class="hero-card">
+          <h3>Lo más solicitado</h3>
+          <ul>
+            <li>Endolifting (servicio estrella)</li>
+            <li>Armonización facial</li>
+            <li>Bioestimulación / regeneración</li>
+            <li>Remodelación corporal</li>
+            <li>Sueroterapia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h3>Remodelación Corporal</h3>
-<p>Tratamientos médicos para definición corporal segura.</p>
-</div>
+    <section id="endolifting">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>⭐ Endolifting — Servicio Estrella</h2>
+            <p>
+              Tensado de piel y remodelación con enfoque médico para resultados progresivos y seguros.
+            </p>
+          </div>
+          <a class="btn btn-primary" id="ctaEndo" href="#">Quiero mi valoración</a>
+        </div>
 
-<div class="card">
-<h3>Sueroterapia</h3>
-<p>Recuperación celular y bienestar integral.</p>
-</div>
+        <div class="card highlight">
+          <div class="two-col">
+            <div>
+              <h3>¿Qué es?</h3>
+              <p>
+                Un procedimiento avanzado orientado a mejorar la apariencia de la piel y apoyar la
+                remodelación en zonas específicas, con un plan personalizado tras valoración.
+              </p>
 
-<div class="card">
-<h3>Rejuvenecimiento Facial</h3>
-<p>Toxina botulínica y procedimientos no quirúrgicos.</p>
-</div>
+              <h3 style="margin-top:14px;">Beneficios</h3>
+              <ul class="list">
+                <li>Mejora del tensado y apariencia de la piel</li>
+                <li>Apoyo en definición de zonas tratadas</li>
+                <li>Resultados progresivos con acompañamiento</li>
+                <li>Enfoque integral según tu caso</li>
+              </ul>
+            </div>
 
-<div class="card">
-<h3>Bienestar Integral</h3>
-<p>Terapias complementarias para equilibrio físico.</p>
-</div>
+            <div>
+              <h3>Zonas comunes</h3>
+              <ul class="list">
+                <li>Abdomen (medio, alto y bajo)</li>
+                <li>Espalda</li>
+                <li>Zona posterior</li>
+                <li>Áreas con adiposidad localizada y celulitis (según valoración)</li>
+              </ul>
 
-</div>
-</section>
+              <h3 style="margin-top:14px;">Importante</h3>
+              <p style="color:var(--muted); font-size:14px; margin:0;">
+                Todo procedimiento requiere valoración profesional para definir si aplica y el plan recomendado.
+              </p>
+            </div>
+          </div>
+        </div>
 
-<section id="contacto">
-<h2>Agenda tu cita</h2>
-<p>
-Contáctanos por WhatsApp o agenda tu valoración personalizada.
-</p>
-<button>Agendar ahora</button>
-</section>
+      </div>
+    </section>
 
-<footer>
-© Dra. Tatiana Mendoza — Medicina Estética Regenerativa
-</footer>
+    <section id="servicios">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Servicios</h2>
+            <p>
+              Catálogo organizado por áreas para que encuentres rápido lo que buscas. (Sin precios)
+            </p>
+          </div>
+        </div>
+
+        <div class="grid">
+
+          <div class="card span-6">
+            <h3>✨ Procedimientos estéticos especializados</h3>
+            <p>Armonización facial personalizada para resultados naturales.</p>
+            <ul class="list">
+              <li>Rinomodelación (y variantes)</li>
+              <li>Labios (volumen, perfilamiento e hidratación)</li>
+              <li>Mentón, pómulos, ojeras</li>
+              <li>Reborde mandibular, cuello</li>
+              <li>Full Face (según valoración)</li>
+            </ul>
+          </div>
+
+          <div class="card span-6">
+            <h3>🧬 Bioestimulación y medicina regenerativa</h3>
+            <p>Mejora de calidad de piel y rejuvenecimiento progresivo.</p>
+            <ul class="list">
+              <li>Ácido poliláctico (rostro / manos / tercio medio)</li>
+              <li>Hidroxiapatita de calcio</li>
+              <li>Terapias para tensado de piel</li>
+              <li>Sueros polilácticos</li>
+            </ul>
+          </div>
+
+          <div class="card span-4">
+            <h3>🔥 Remodelación corporal</h3>
+            <p>Definición corporal con enfoque médico.</p>
+            <ul class="list">
+              <li>Adiposidad localizada y celulitis</li>
+              <li>Lipopapada</li>
+              <li>Programas postparto</li>
+              <li>Radiofrecuencia (según valoración)</li>
+            </ul>
+          </div>
+
+          <div class="card span-4">
+            <h3>💧 Sueroterapia</h3>
+            <p>Apoyo al bienestar integral.</p>
+            <ul class="list">
+              <li>Reparador, energizante, revitalizador</li>
+              <li>Desintoxicante / Detox</li>
+              <li>Inmunológico</li>
+              <li>Vitamina C (según valoración)</li>
+            </ul>
+          </div>
+
+          <div class="card span-4">
+            <h3>💉 Rejuvenecimiento facial no quirúrgico</h3>
+            <p>Procedimientos estéticos con valoración previa.</p>
+            <ul class="list">
+              <li>Toxina botulínica (zonas)</li>
+              <li>Bruxismo</li>
+              <li>Sonrisa gingival</li>
+              <li>Hiperhidrosis (axilar/palmar)</li>
+            </ul>
+          </div>
+
+          <div class="card span-12">
+            <h3>🧘 Bienestar integral y terapias complementarias</h3>
+            <p>Opciones para equilibrio y recuperación.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
+              <span class="pill">Masaje purificante</span>
+              <span class="pill">Masaje balinés</span>
+              <span class="pill">Express espalda</span>
+              <span class="pill">Reflexología + desintoxicación iónica</span>
+              <span class="pill">Bambuterapia</span>
+              <span class="pill">Higiene/masaje facial</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Agenda tu cita</h2>
+            <p>Escríbenos por WhatsApp y recibe tu orientación inicial.</p>
+          </div>
+          <a class="btn btn-primary" id="ctaContact" href="#">Agendar ahora</a>
+        </div>
+
+        <div class="card">
+          <div class="contact">
+            <div>
+              <strong>WhatsApp</strong><br/>
+              <small>+57 301 5058597 · +57 300 9872255</small>
+            </div>
+            <div>
+              <strong>Instagram</strong><br/>
+              <small>@dra.tatiana.mendoza</small>
+            </div>
+            <div>
+              <strong>Atención</strong><br/>
+              <small>Con valoración previa</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © Dra. Tatiana Mendoza — Medicina Estética Regenerativa
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="wa-float" id="waFloat" href="#" aria-label="WhatsApp">
+    WhatsApp
+  </a>
+
+  <script>
+    // Número principal (puedes cambiarlo si prefieres usar el otro)
+    const phone = "573015058597"; // +57 301 5058597
+    const msg = encodeURIComponent(
+      "Hola, quisiera agendar una valoración con la Dra. Tatiana Mendoza. ¿Me brindan información, por favor?"
+    );
+    const waLink = `https://wa.me/${phone}?text=${msg}`;
+
+    // Asignar link a CTAs
+    document.getElementById("ctaHero").href = waLink;
+    document.getElementById("ctaEndo").href = waLink;
+    document.getElementById("ctaContact").href = waLink;
+    document.getElementById("waFloat").href = waLink;
+  </script>
 
 </body>
 </html>

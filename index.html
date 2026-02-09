@@ -14,41 +14,41 @@
 
 <body>
 
-<header>
-  <div class="container topbar">
+<header class="siteHeader">
+  <div class="container headerRow">
     <div class="brand">
       <img src="assets/logo.png" alt="Logo Dra. Tatiana Mendoza">
-      <div class="t">
-        <strong>Dra. Tatiana Mendoza</strong><br>
-        <span>Medicina Estética & Regenerativa</span>
+      <div class="brandText">
+        <div class="brandName">Dra. Tatiana Mendoza</div>
+        <div class="brandSub">Medicina Estética &amp; Regenerativa</div>
       </div>
     </div>
 
     <nav class="nav">
-      <button id="btnServicios" type="button">Servicios</button>
-      <button id="btnNosotros" type="button">Nosotros</button>
-      <button class="cta" id="ctaTop" type="button">Agenda</button>
+      <button class="navBtn" id="btnServicios" type="button">Servicios</button>
+      <button class="navBtn" id="btnNosotros" type="button">Nosotros</button>
+      <button class="navCta" id="btnAgenda" type="button">Agenda</button>
     </nav>
   </div>
 
-  <!-- Mega menú Servicios (categorías + 3 principales por categoría) -->
+  <!-- Mega menú Servicios -->
   <div class="mega" id="mega-servicios">
-    <div class="container mega-grid">
-      <div class="mega-col">
+    <div class="container megaGrid">
+      <div class="megaCol">
         <h4>Especializados</h4>
         <a href="#catalogo" data-open="especializados:0" data-close>Endolifting (Abdominal)</a>
         <a href="#catalogo" data-open="especializados:1" data-close>Lipopapada</a>
         <a href="#catalogo" data-open="especializados:2" data-close>Adiposidad localizada y celulitis</a>
       </div>
 
-      <div class="mega-col">
+      <div class="megaCol">
         <h4>Sueroterapia</h4>
         <a href="#catalogo" data-open="sueroterapia:0" data-close>Suero reparador</a>
         <a href="#catalogo" data-open="sueroterapia:1" data-close>Suero energizante</a>
         <a href="#catalogo" data-open="sueroterapia:2" data-close>Suero desintoxicante</a>
       </div>
 
-      <div class="mega-col">
+      <div class="megaCol">
         <h4>Faciales</h4>
         <a href="#catalogo" data-open="facial:0" data-close>Armonización facial</a>
         <a href="#catalogo" data-open="facial:1" data-close>Rejuvenecimiento no quirúrgico</a>
@@ -59,18 +59,18 @@
 
   <!-- Mega menú Nosotros -->
   <div class="mega" id="mega-nosotros">
-    <div class="container mega-grid">
-      <div class="mega-col">
+    <div class="container megaGrid">
+      <div class="megaCol">
         <h4>Acerca</h4>
         <a href="#nosotros" data-close>Enfoque</a>
         <a href="#nosotros" data-close>Acompañamiento</a>
       </div>
-      <div class="mega-col">
+      <div class="megaCol">
         <h4>Confianza</h4>
         <a href="#nosotros" data-close>Preguntas frecuentes</a>
         <a href="#contacto" data-close>Contacto</a>
       </div>
-      <div class="mega-col">
+      <div class="megaCol">
         <h4>Redes</h4>
         <a href="#contacto" data-close>Instagram</a>
         <a href="#contacto" data-close>WhatsApp</a>
@@ -79,134 +79,137 @@
   </div>
 </header>
 
-<!-- HERO full pantalla -->
+<!-- HERO full pantalla con textos encima -->
 <section class="hero" aria-label="Destacados">
-  <div class="slide active" data-slide="0">
+  <div class="heroSlide active" data-hero="0">
     <img src="assets/Portada/endolifting.png" alt="Endolifting abdominal">
-    <div class="slide-content">
-      <div class="kicker">Servicio estrella</div>
+    <div class="heroOverlay"></div>
+    <div class="heroContent">
+      <div class="heroKicker">Servicio estrella</div>
       <h1>Endolifting abdominal</h1>
-      <p>Tensado de piel y mejora del contorno corporal con enfoque médico.</p>
-      <div class="actions">
-        <a class="primary" href="#catalogo">Saber más</a>
-        <a class="secondary" id="ctaHero1" href="#">Agendar</a>
+      <p>Tensado y mejora del contorno corporal con enfoque médico.</p>
+      <div class="heroActions">
+        <a class="btnPrimary" href="#catalogo">Saber más</a>
+        <a class="btnSecondary" href="#" id="heroAgendar1">Agendar</a>
       </div>
     </div>
   </div>
 
-  <div class="slide" data-slide="1">
+  <div class="heroSlide" data-hero="1">
     <img src="assets/Portada/facial.png" alt="Armonización facial">
-    <div class="slide-content">
-      <div class="kicker">Facial</div>
+    <div class="heroOverlay"></div>
+    <div class="heroContent">
+      <div class="heroKicker">Facial</div>
       <h1>Armonización facial</h1>
       <p>Protocolos orientados a resultados naturales, tras valoración.</p>
-      <div class="actions">
-        <a class="primary" href="#catalogo">Ver servicios</a>
-        <a class="secondary" id="ctaHero2" href="#">Agendar</a>
+      <div class="heroActions">
+        <a class="btnPrimary" href="#catalogo">Ver servicios</a>
+        <a class="btnSecondary" href="#" id="heroAgendar2">Agendar</a>
       </div>
     </div>
   </div>
 
-  <div class="slide" data-slide="2">
+  <div class="heroSlide" data-hero="2">
     <img src="assets/Portada/piel.png" alt="Calidad y bienestar de la piel">
-    <div class="slide-content">
-      <div class="kicker">Regenerativa</div>
+    <div class="heroOverlay"></div>
+    <div class="heroContent">
+      <div class="heroKicker">Regenerativa</div>
       <h1>Calidad de piel</h1>
       <p>Bioestimulación y regeneración para una piel sana y luminosa.</p>
-      <div class="actions">
-        <a class="primary" href="#catalogo">Explorar</a>
-        <a class="secondary" id="ctaHero3" href="#">Agendar</a>
+      <div class="heroActions">
+        <a class="btnPrimary" href="#catalogo">Explorar</a>
+        <a class="btnSecondary" href="#" id="heroAgendar3">Agendar</a>
       </div>
     </div>
   </div>
 
-  <div class="arrows">
-    <button id="prev" aria-label="Anterior" type="button">‹</button>
-    <button id="next" aria-label="Siguiente" type="button">›</button>
-  </div>
+  <button class="heroArrow left" id="heroPrev" aria-label="Anterior" type="button">‹</button>
+  <button class="heroArrow right" id="heroNext" aria-label="Siguiente" type="button">›</button>
 
-  <div class="dots">
-    <button class="dot active" data-dot="0" aria-label="Slide 1" type="button"></button>
-    <button class="dot" data-dot="1" aria-label="Slide 2" type="button"></button>
-    <button class="dot" data-dot="2" aria-label="Slide 3" type="button"></button>
+  <div class="heroDots" aria-label="Indicadores">
+    <button class="dot active" data-dot="0" type="button" aria-label="1"></button>
+    <button class="dot" data-dot="1" type="button" aria-label="2"></button>
+    <button class="dot" data-dot="2" type="button" aria-label="3"></button>
   </div>
 </section>
 
 <main>
 
-  <!-- SECCIÓN TIPO CHEVROLET -->
-  <section class="chevyCatalog" id="catalogo">
+  <!-- CATÁLOGO estilo Chevrolet -->
+  <section class="catalog" id="catalogo">
     <div class="container">
-      <h2 class="chevyTitle">Tu belleza en nuestras manos</h2>
+      <h2 class="catalogTitle">Tu belleza en nuestras manos</h2>
 
-      <div class="chevyTabs" id="chevyTabs"></div>
+      <!-- Barra de categorías (NO se quita) -->
+      <div class="catalogTabs" id="catalogTabs"></div>
 
-      <div class="chevyStage">
-        <div class="chevyBackdrop"></div>
+      <div class="catalogStage">
+        <div class="catalogBackdrop"></div>
 
-        <button class="chevyArrow left" id="svcPrev" aria-label="Anterior" type="button">‹</button>
+        <button class="catalogArrow left" id="svcPrev" aria-label="Anterior" type="button">‹</button>
 
-        <div class="chevyImageWrap">
+        <div class="catalogImageWrap">
           <img id="svcImg"
-     src="assets/Portada/endolifting.png"
-     alt="Servicio"
-     loading="lazy"
-     decoding="async"
-     referrerpolicy="no-referrer">
+               src="assets/Portada/endolifting.png"
+               alt="Servicio"
+               loading="lazy"
+               decoding="async"
+               referrerpolicy="no-referrer">
         </div>
 
-        <button class="chevyArrow right" id="svcNext" aria-label="Siguiente" type="button">›</button>
+        <button class="catalogArrow right" id="svcNext" aria-label="Siguiente" type="button">›</button>
       </div>
 
-      <div class="chevyMeta">
-        <div class="chevyMetaLeft">
-          <h3 id="svcName" class="chevyName">Endolifting (Abdominal)</h3>
-          <p id="svcDesc" class="chevyDesc">Tensado y mejora del contorno abdominal con enfoque médico.</p>
+      <div class="catalogMeta">
+        <div>
+          <h3 id="svcName" class="svcName">Endolifting (Abdominal)</h3>
+          <p id="svcDesc" class="svcDesc">Tensado y mejora del contorno abdominal con enfoque médico.</p>
         </div>
 
-        <div class="chevyMetaRight">
-          <a class="chevyLink" id="svcMore" href="#serviciosTop">Más información</a>
+        <div class="catalogLinkWrap">
+          <a class="catalogLink" id="svcMore" href="#servicios">Más información</a>
+          <a class="catalogAgendar" href="#" id="svcAgendar">Agendar</a>
         </div>
       </div>
 
-      <p class="chevyNote">
+      <p class="catalogNote">
         * Los precios del portafolio no se muestran en la web. Los procedimientos se confirman tras valoración médica.
       </p>
     </div>
   </section>
 
-  <!-- Servicios (sección de apoyo) -->
-  <section class="section" id="serviciosTop">
+  <!-- Sección Servicios (ancla para “Más información”) -->
+  <section class="section" id="servicios">
     <div class="container">
       <h2>Servicios</h2>
-      <p>Explora las categorías principales. Selecciona una opción en “Servicios” del menú superior para ir directamente al catálogo.</p>
+      <p>Selecciona una categoría en el menú superior o en las pestañas del catálogo para explorar los principales procedimientos.</p>
 
       <div class="cards">
         <article class="card">
           <div class="thumb"><img src="assets/Portada/endolifting.png" alt="Endolifting"></div>
-          <div class="body">
+          <div class="cardBody">
             <h3>Endolifting abdominal</h3>
             <p>Servicio estrella (según valoración).</p>
           </div>
-          <div class="foot"><span class="pill">Especializados</span></div>
+          <div class="cardFoot"><span class="pill">Especializados</span></div>
         </article>
 
         <article class="card">
           <div class="thumb"><img src="assets/Portada/facial.png" alt="Armonización facial"></div>
-          <div class="body">
+          <div class="cardBody">
             <h3>Armonización facial</h3>
             <p>Resultados naturales con enfoque médico.</p>
           </div>
-          <div class="foot"><span class="pill">Faciales</span></div>
+          <div class="cardFoot"><span class="pill">Faciales</span></div>
         </article>
 
         <article class="card">
           <div class="thumb"><img src="assets/Portada/piel.png" alt="Calidad de piel"></div>
-          <div class="body">
+          <div class="cardBody">
             <h3>Calidad y bienestar de la piel</h3>
             <p>Bioestimulación y regeneración.</p>
           </div>
-          <div class="foot"><span class="pill">Regenerativa</span></div>
+          <div class="cardFoot"><span class="pill">Regenerativa</span></div>
         </article>
       </div>
     </div>
@@ -220,31 +223,31 @@
         Medicina Estética y Regenerativa con enfoque personalizado. Priorizamos seguridad, acompañamiento y resultados naturales.
         Cada procedimiento se define tras valoración.
       </p>
-      <p><strong>Importante:</strong> La información presentada no reemplaza una consulta médica.</p>
+      <p class="small"><strong>Importante:</strong> La información presentada no reemplaza una consulta médica.</p>
     </div>
   </section>
 
   <!-- Contacto -->
-  <section class="contact-strip" id="contacto">
-    <div class="container contact-row">
+  <section class="contact" id="contacto">
+    <div class="container contactRow">
       <div>
         <strong>Agenda tu valoración</strong>
-        <small>WhatsApp: +57 301 5058597 · +57 300 9872255 · Instagram: @dra.tatiana.mendoza</small>
+        <div class="small">WhatsApp: +57 301 5058597 · +57 300 9872255 · Instagram: @dra.tatiana.mendoza</div>
       </div>
-      <div class="contact-actions">
-        <button class="btn2 gold" id="ctaBottom" type="button">Escribir por WhatsApp</button>
-        <a class="btn2" href="#catalogo">Ver catálogo</a>
+      <div class="contactActions">
+        <button class="btnGold" id="ctaWhats" type="button">Escribir por WhatsApp</button>
+        <a class="btnOutline" href="#catalogo">Ver catálogo</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="container">© Dra. Tatiana Mendoza — Medicina Estética & Regenerativa</div>
+<footer class="footer">
+  <div class="container">© Dra. Tatiana Mendoza — Medicina Estética &amp; Regenerativa</div>
 </footer>
 
-<button class="wa" id="waFloat" type="button">WhatsApp</button>
+<button class="waFloat" id="waFloat" type="button">WhatsApp</button>
 
 <script src="assets/js/script.js"></script>
 </body>

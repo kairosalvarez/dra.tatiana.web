@@ -1,1 +1,136 @@
+.catalog{
+  padding:64px 0 74px;
+  background:#fff;
+}
+.catalog-title{
+  margin:0 0 18px;
+  text-align:center;
+  font-size:34px;
+  font-weight:600;
+  letter-spacing:-0.3px;
+}
+.catalog-tabs{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:10px 0 26px;
+}
+.catalog-tab{
+  border:0;
+  background:transparent;
+  font-size:14px;
+  color:#666;
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.catalog-tab:hover{
+  border-color:rgba(0,0,0,.10);
+  background:rgba(0,0,0,.02);
+  color:#111;
+}
+.catalog-tab.active{
+  color:#111;
+  border-color:rgba(201,162,77,.35);
+  background:rgba(201,162,77,.10);
+  font-weight:600;
+}
 
+.catalog-stage{
+  position:relative;
+  max-width:1060px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.catalog-arrow{
+  width:54px;height:54px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  cursor:pointer;
+  font-size:28px;
+  line-height:1;
+  display:grid;
+  place-items:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+.catalog-card{
+  flex:1;
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+.catalog-media{
+  position:relative;
+  min-height:360px;
+  background:#f3f3f3;
+}
+.catalog-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.catalog-mask{
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.00));
+}
+.catalog-info{
+  padding:26px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+}
+.catalog-info h3{
+  margin:0;
+  font-size:28px;
+  font-weight:600;
+}
+.catalog-info p{
+  margin:0;
+  color:#6b6b6b;
+  font-size:14px;
+  line-height:1.7;
+}
+.catalog-actions{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+  flex-wrap:wrap;
+}
+.catalog-btn{
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:700;
+  border:1px solid rgba(0,0,0,.10);
+}
+.catalog-btn.primary{
+  background:linear-gradient(135deg, #C9A24D, #E8D8A8);
+  border-color:rgba(201,162,77,.35);
+  color:#111;
+}
+.catalog-btn.secondary{
+  background:#fff;
+  color:#111;
+}
+.catalog-note{
+  margin:18px auto 0;
+  max-width:900px;
+  text-align:center;
+  color:#8a8a8a;
+  font-size:13px;
+}
+
+@media (max-width: 900px){
+  .catalog-card{grid-template-columns:1fr}
+  .catalog-media{min-height:260px}
+  .catalog-arrow{display:none}
+}

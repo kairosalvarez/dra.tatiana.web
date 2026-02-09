@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="es">
-  <link rel="stylesheet" href="assets/css/style.css">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,313 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --gold:#C9A24D;
-      --gold-soft:#E8D8A8;
-      --gold-dark:#B8923B;
-      --text:#111;
-      --muted:#6b6b6b;
-      --line:rgba(0,0,0,.10);
-      --shadow: 0 16px 34px rgba(0,0,0,.16);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:#fff;
-      color:var(--text);
-      font-weight:300;
-    }
-    a{text-decoration:none;color:inherit}
-    .container{max-width:1200px;margin:0 auto;padding:0 16px}
-
-    /* HEADER */
-    header{
-      position:sticky;top:0;z-index:100;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 0; gap:12px;
-    }
-    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
-    .brand img{height:34px;width:auto;display:block}
-    .brand .t{line-height:1.15}
-    .brand .t strong{font-size:14px;font-weight:500}
-    .brand .t span{font-size:12px;color:var(--muted)}
-
-    .nav{display:flex;gap:18px;align-items:center}
-    .nav button{
-      appearance:none;border:1px solid transparent;background:transparent;
-      color:#666;font-size:14px;font-weight:400;cursor:pointer;
-      padding:10px 10px;border-radius:12px;
-    }
-    .nav button:hover{color:#111;border-color:var(--line);background:rgba(0,0,0,.02)}
-    .nav .cta{
-      padding:10px 16px;border-radius:999px;
-      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
-      color:#111;font-weight:600;border:1px solid rgba(201,162,77,.35);
-      cursor:pointer;
-    }
-
-    /* MEGA MENÚ (desplegable con animación) */
-    .mega{
-      max-height:0;
-      overflow:hidden;
-      border-top:1px solid var(--line);
-      background:rgba(255,255,255,.97);
-      transition:max-height .35s ease;
-    }
-    .mega.open{max-height:420px}
-    .mega-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:14px;
-      padding:16px 0 18px;
-    }
-    .mega-col{
-      border:1px solid rgba(201,162,77,.22);
-      background:rgba(201,162,77,.05);
-      border-radius:18px;
-      padding:14px;
-    }
-    .mega-col h4{
-      margin:0 0 10px;
-      font-size:12px;
-      letter-spacing:.5px;
-      text-transform:uppercase;
-      color:var(--gold-dark);
-      font-weight:600;
-    }
-    .mega-col a{
-      display:block;
-      padding:10px 10px;
-      border-radius:14px;
-      border:1px solid transparent;
-      color:#5e5e5e;
-      font-size:14px;
-      font-weight:400;
-    }
-    .mega-col a:hover{
-      color:#111;
-      border-color:rgba(201,162,77,.25);
-      background:rgba(201,162,77,.10);
-    }
-
-    /* HERO FULL SCREEN */
-    .hero{
-      position:relative;
-      height:calc(100vh - 70px);
-      min-height:560px;
-      overflow:hidden;
-      background:#000;
-    }
-    .slide{
-      position:absolute; inset:0;
-      opacity:0;
-      transition:opacity .55s ease;
-    }
-    .slide.active{opacity:1}
-
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    /* Mejor contraste: overlay + sombra texto */
-    .slide::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(90deg,
-          rgba(0,0,0,.72) 0%,
-          rgba(0,0,0,.45) 45%,
-          rgba(0,0,0,.18) 70%,
-          rgba(0,0,0,0) 100%);
-    }
-
-    .slide-content{
-      position:absolute;
-      left:7%;
-      top:50%;
-      transform:translateY(-50%);
-      color:#fff;
-      max-width:640px;
-      z-index:2;
-      text-shadow: 0 10px 28px rgba(0,0,0,.60);
-    }
-    .kicker{
-      font-size:14px;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.88);
-      font-weight:500;
-      margin-bottom:10px;
-    }
-    .slide-content h1{
-      font-size:56px;
-      line-height:1.05;
-      font-weight:600;
-      margin:0 0 12px;
-    }
-    .slide-content p{
-      font-size:22px;
-      font-weight:300;
-      margin:0 0 22px;
-      color:rgba(255,255,255,.92);
-    }
-
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .actions a{
-      padding:13px 20px;
-      border-radius:14px;
-      font-weight:600;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:190px;
-      box-shadow: var(--shadow);
-    }
-    .primary{
-      background:#fff;
-      color:#111;
-      border:1px solid rgba(255,255,255,.55);
-    }
-    .secondary{
-      background:rgba(0,0,0,.35);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.55);
-      backdrop-filter: blur(6px);
-    }
-    .primary:hover{transform:translateY(-1px)}
-    .secondary:hover{transform:translateY(-1px)}
-
-    /* Flechas */
-    .arrows{
-      position:absolute; inset:0;
-      display:flex; align-items:center; justify-content:space-between;
-      z-index:3; pointer-events:none;
-    }
-    .arrows button{
-      pointer-events:auto;
-      width:48px;height:48px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.35);
-      background:rgba(0,0,0,.30);
-      color:#fff;
-      margin:0 14px;
-      cursor:pointer;
-      font-size:22px;
-      backdrop-filter: blur(6px);
-    }
-
-    /* Dots */
-    .dots{
-      position:absolute;
-      bottom:20px;
-      width:100%;
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      z-index:3;
-    }
-    .dot{
-      width:44px;height:4px;border-radius:99px;
-      background:rgba(255,255,255,.40);
-      border:0;cursor:pointer;
-    }
-    .dot.active{background:#fff}
-
-    /* SECCIONES (para que el scroll haga algo) */
-    .section{padding:60px 0}
-    .section h2{margin:0;font-weight:600;font-size:26px}
-    .section p{margin:10px 0 0;color:var(--muted);max-width:90ch;line-height:1.7}
-
-    .cards{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:14px;
-    }
-    .card{
-      grid-column:span 4;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:18px;
-      overflow:hidden;
-      background:#fff;
-    }
-    .card .thumb{height:170px;background:#f3f3f3}
-    .card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-    .card .body{padding:14px}
-    .card .body h3{margin:0 0 8px;font-weight:600;font-size:16px}
-    .card .body p{margin:0;color:var(--muted);font-size:13px}
-    .card .foot{padding:0 14px 14px}
-    .pill{
-      display:inline-flex;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(201,162,77,.35);
-      background:rgba(201,162,77,.10);
-      font-weight:600;
-      font-size:13px;
-      color:#111;
-    }
-
-    /* CONTACTO */
-    .contact-strip{
-      border-top:1px solid rgba(201,162,77,.28);
-      background:linear-gradient(135deg, rgba(201,162,77,.16), rgba(255,255,255,.92));
-      padding:26px 0;
-    }
-    .contact-row{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;flex-wrap:wrap;
-    }
-    .contact-row strong{font-size:16px;font-weight:700}
-    .contact-row small{color:var(--muted);display:block;margin-top:6px}
-    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn2{
-      padding:12px 16px;border-radius:14px;border:1px solid rgba(0,0,0,.10);
-      background:#fff;font-weight:600;cursor:pointer;
-    }
-    .btn2.gold{
-      border-color:rgba(201,162,77,.35);
-      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
-    }
-
-    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
-
-    .wa{
-      position:fixed;right:16px;bottom:16px;z-index:200;
-      border-radius:999px;padding:12px 14px;
-      background:#25D366;color:#0b0b0e;font-weight:800;border:0;
-      box-shadow:0 14px 30px rgba(0,0,0,.18);
-      cursor:pointer;
-    }
-
-    @media (max-width:980px){
-      .mega-grid{grid-template-columns:1fr}
-      .slide-content h1{font-size:44px}
-      .slide-content p{font-size:18px}
-      .card{grid-column:span 6}
-    }
-    @media (max-width:640px){
-      .hero{min-height:520px}
-      .slide-content{left:16px;right:16px;max-width:none}
-      .slide-content h1{font-size:36px}
-      .actions a{min-width:auto}
-      .card{grid-column:span 12}
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+
 <header>
   <div class="container topbar">
     <div class="brand">
@@ -327,38 +24,38 @@
       </div>
     </div>
 
-    <div class="nav">
-      <button id="btnServicios">Servicios</button>
-      <button id="btnNosotros">Nosotros</button>
-      <button class="cta" id="ctaTop">Agenda</button>
-    </div>
+    <nav class="nav">
+      <button id="btnServicios" type="button">Servicios</button>
+      <button id="btnNosotros" type="button">Nosotros</button>
+      <button class="cta" id="ctaTop" type="button">Agenda</button>
+    </nav>
   </div>
 
-  <!-- Mega menú Servicios -->
- <div class="mega" id="mega-servicios">
-  <div class="container mega-grid">
-    <div class="mega-col">
-      <h4>Especializados</h4>
-      <a href="#catalogo" data-open="especializados:0" data-close>Endolifting (Abdominal)</a>
-      <a href="#catalogo" data-open="especializados:1" data-close>Lipopapada</a>
-      <a href="#catalogo" data-open="especializados:2" data-close>Adiposidad localizada y celulitis</a>
-    </div>
+  <!-- Mega menú Servicios (categorías + 3 principales por categoría) -->
+  <div class="mega" id="mega-servicios">
+    <div class="container mega-grid">
+      <div class="mega-col">
+        <h4>Especializados</h4>
+        <a href="#catalogo" data-open="especializados:0" data-close>Endolifting (Abdominal)</a>
+        <a href="#catalogo" data-open="especializados:1" data-close>Lipopapada</a>
+        <a href="#catalogo" data-open="especializados:2" data-close>Adiposidad localizada y celulitis</a>
+      </div>
 
-    <div class="mega-col">
-      <h4>Sueroterapia</h4>
-      <a href="#catalogo" data-open="sueroterapia:0" data-close>Suero reparador</a>
-      <a href="#catalogo" data-open="sueroterapia:1" data-close>Suero energizante</a>
-      <a href="#catalogo" data-open="sueroterapia:2" data-close>Suero desintoxicante</a>
-    </div>
+      <div class="mega-col">
+        <h4>Sueroterapia</h4>
+        <a href="#catalogo" data-open="sueroterapia:0" data-close>Suero reparador</a>
+        <a href="#catalogo" data-open="sueroterapia:1" data-close>Suero energizante</a>
+        <a href="#catalogo" data-open="sueroterapia:2" data-close>Suero desintoxicante</a>
+      </div>
 
-    <div class="mega-col">
-      <h4>Rejuvenecimiento & Botox</h4>
-      <a href="#catalogo" data-open="rejuvenecimiento:0" data-close>Rejuvenecimiento facial no quirúrgico</a>
-      <a href="#catalogo" data-open="rejuvenecimiento:1" data-close>Botox: tercio superior</a>
-      <a href="#catalogo" data-open="rejuvenecimiento:2" data-close>Botox: tercio inferior</a>
+      <div class="mega-col">
+        <h4>Faciales</h4>
+        <a href="#catalogo" data-open="facial:0" data-close>Armonización facial</a>
+        <a href="#catalogo" data-open="facial:1" data-close>Rejuvenecimiento no quirúrgico</a>
+        <a href="#catalogo" data-open="facial:2" data-close>Calidad de piel</a>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Mega menú Nosotros -->
   <div class="mega" id="mega-nosotros">
@@ -382,9 +79,8 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO full pantalla -->
 <section class="hero" aria-label="Destacados">
-  <!-- Slide 1 -->
   <div class="slide active" data-slide="0">
     <img src="assets/Portada/endolifting.png" alt="Endolifting abdominal">
     <div class="slide-content">
@@ -392,13 +88,12 @@
       <h1>Endolifting abdominal</h1>
       <p>Tensado de piel y mejora del contorno corporal con enfoque médico.</p>
       <div class="actions">
-        <a class="primary" href="#servicios">Saber más</a>
+        <a class="primary" href="#catalogo">Saber más</a>
         <a class="secondary" id="ctaHero1" href="#">Agendar</a>
       </div>
     </div>
   </div>
 
-  <!-- Slide 2 -->
   <div class="slide" data-slide="1">
     <img src="assets/Portada/facial.png" alt="Armonización facial">
     <div class="slide-content">
@@ -406,13 +101,12 @@
       <h1>Armonización facial</h1>
       <p>Protocolos orientados a resultados naturales, tras valoración.</p>
       <div class="actions">
-        <a class="primary" href="#servicios">Ver servicios</a>
+        <a class="primary" href="#catalogo">Ver servicios</a>
         <a class="secondary" id="ctaHero2" href="#">Agendar</a>
       </div>
     </div>
   </div>
 
-  <!-- Slide 3 -->
   <div class="slide" data-slide="2">
     <img src="assets/Portada/piel.png" alt="Calidad y bienestar de la piel">
     <div class="slide-content">
@@ -420,77 +114,116 @@
       <h1>Calidad de piel</h1>
       <p>Bioestimulación y regeneración para una piel sana y luminosa.</p>
       <div class="actions">
-        <a class="primary" href="#servicios">Explorar</a>
+        <a class="primary" href="#catalogo">Explorar</a>
         <a class="secondary" id="ctaHero3" href="#">Agendar</a>
       </div>
     </div>
   </div>
 
   <div class="arrows">
-    <button id="prev" aria-label="Anterior">‹</button>
-    <button id="next" aria-label="Siguiente">›</button>
+    <button id="prev" aria-label="Anterior" type="button">‹</button>
+    <button id="next" aria-label="Siguiente" type="button">›</button>
   </div>
 
   <div class="dots">
-    <button class="dot active" data-dot="0" aria-label="Slide 1"></button>
-    <button class="dot" data-dot="1" aria-label="Slide 2"></button>
-    <button class="dot" data-dot="2" aria-label="Slide 3"></button>
+    <button class="dot active" data-dot="0" aria-label="Slide 1" type="button"></button>
+    <button class="dot" data-dot="1" aria-label="Slide 2" type="button"></button>
+    <button class="dot" data-dot="2" aria-label="Slide 3" type="button"></button>
   </div>
 </section>
 
 <main>
-  <!-- SERVICIOS -->
-<section class="catalog" id="catalogo">
-  <div class="container">
-    <h2 class="catalog-title">Tu belleza en nuestras manos</h2>
 
-    <!-- Tabs / Categorías -->
-    <div class="catalog-tabs" id="catalogTabs"></div>
+  <!-- SECCIÓN TIPO CHEVROLET -->
+  <section class="chevyCatalog" id="catalogo">
+    <div class="container">
+      <h2 class="chevyTitle">Tu belleza en nuestras manos</h2>
 
-    <!-- Card principal tipo Chevrolet -->
-    <div class="catalog-stage">
-      <button class="catalog-arrow left" id="catPrev" aria-label="Anterior">‹</button>
+      <div class="chevyTabs" id="chevyTabs"></div>
 
-      <div class="catalog-card">
-        <div class="catalog-media">
-          <img id="catImg" src="" alt="Servicio" />
-          <div class="catalog-mask"></div>
+      <div class="chevyStage">
+        <div class="chevyBackdrop"></div>
+
+        <button class="chevyArrow left" id="svcPrev" aria-label="Anterior" type="button">‹</button>
+
+        <div class="chevyImageWrap">
+          <img id="svcImg"
+               src="assets/Portada/endolifting.png"
+               alt="Servicio"
+               loading="lazy"
+               decoding="async">
         </div>
 
-        <div class="catalog-info">
-          <h3 id="catName"></h3>
-          <p id="catDesc"></p>
-          <div class="catalog-actions">
-            <a class="catalog-btn primary" id="catMore" href="#serviciosTop">Más información</a>
-            <a class="catalog-btn secondary" id="catBook" href="#" target="_blank" rel="noopener">Agendar</a>
-          </div>
+        <button class="chevyArrow right" id="svcNext" aria-label="Siguiente" type="button">›</button>
+      </div>
+
+      <div class="chevyMeta">
+        <div class="chevyMetaLeft">
+          <h3 id="svcName" class="chevyName">Endolifting (Abdominal)</h3>
+          <p id="svcDesc" class="chevyDesc">Tensado y mejora del contorno abdominal con enfoque médico.</p>
+        </div>
+
+        <div class="chevyMetaRight">
+          <a class="chevyLink" id="svcMore" href="#serviciosTop">Más información</a>
         </div>
       </div>
 
-      <button class="catalog-arrow right" id="catNext" aria-label="Siguiente">›</button>
-    </div>
-
-    <p class="catalog-note">
-      * Los precios del portafolio no se muestran en la web. Los procedimientos se confirman tras valoración médica.
-    </p>
-  </div>
-</section>
-
-  <!-- NOSOTROS -->
-  <section class="section" id="nosotros">
-    <div class="container">
-      <h2>Nosotros</h2>
-      <p>
-        Medicina Estética y Regenerativa con enfoque personalizado. Priorizamos seguridad, acompañamiento
-        y resultados naturales. Cada tratamiento se define tras valoración.
-      </p>
-      <p>
-        <strong>Importante:</strong> La información presentada no reemplaza una consulta médica.
+      <p class="chevyNote">
+        * Los precios del portafolio no se muestran en la web. Los procedimientos se confirman tras valoración médica.
       </p>
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- Servicios (sección de apoyo) -->
+  <section class="section" id="serviciosTop">
+    <div class="container">
+      <h2>Servicios</h2>
+      <p>Explora las categorías principales. Selecciona una opción en “Servicios” del menú superior para ir directamente al catálogo.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="thumb"><img src="assets/Portada/endolifting.png" alt="Endolifting"></div>
+          <div class="body">
+            <h3>Endolifting abdominal</h3>
+            <p>Servicio estrella (según valoración).</p>
+          </div>
+          <div class="foot"><span class="pill">Especializados</span></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="assets/Portada/facial.png" alt="Armonización facial"></div>
+          <div class="body">
+            <h3>Armonización facial</h3>
+            <p>Resultados naturales con enfoque médico.</p>
+          </div>
+          <div class="foot"><span class="pill">Faciales</span></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="assets/Portada/piel.png" alt="Calidad de piel"></div>
+          <div class="body">
+            <h3>Calidad y bienestar de la piel</h3>
+            <p>Bioestimulación y regeneración.</p>
+          </div>
+          <div class="foot"><span class="pill">Regenerativa</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section class="section" id="nosotros">
+    <div class="container">
+      <h2>Nosotros</h2>
+      <p>
+        Medicina Estética y Regenerativa con enfoque personalizado. Priorizamos seguridad, acompañamiento y resultados naturales.
+        Cada procedimiento se define tras valoración.
+      </p>
+      <p><strong>Importante:</strong> La información presentada no reemplaza una consulta médica.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
   <section class="contact-strip" id="contacto">
     <div class="container contact-row">
       <div>
@@ -498,74 +231,20 @@
         <small>WhatsApp: +57 301 5058597 · +57 300 9872255 · Instagram: @dra.tatiana.mendoza</small>
       </div>
       <div class="contact-actions">
-        <button class="btn2 gold" id="ctaBottom">Escribir por WhatsApp</button>
-        <a class="btn2" href="#servicios">Ver servicios</a>
+        <button class="btn2 gold" id="ctaBottom" type="button">Escribir por WhatsApp</button>
+        <a class="btn2" href="#catalogo">Ver catálogo</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="container">© Dra. Tatiana Mendoza — Medicina Estética & Regenerativa</div>
 </footer>
 
-<button class="wa" id="waFloat">WhatsApp</button>
+<button class="wa" id="waFloat" type="button">WhatsApp</button>
 
-<script>
-  // WhatsApp
-  const phone = "573015058597";
-  const msg = encodeURIComponent("Hola, quisiera agendar una valoración con la Dra. Tatiana Mendoza. ¿Me brindan información, por favor?");
-  const wa = `https://wa.me/${phone}?text=${msg}`;
-  document.getElementById("ctaTop").addEventListener("click", ()=>window.open(wa,"_blank"));
-  document.getElementById("ctaHero1").href = wa;
-  document.getElementById("ctaHero2").href = wa;
-  document.getElementById("ctaHero3").href = wa;
-  document.getElementById("ctaBottom").addEventListener("click", ()=>window.open(wa,"_blank"));
-  document.getElementById("waFloat").addEventListener("click", ()=>window.open(wa,"_blank"));
-
-  // Mega menus
-  const megaServicios = document.getElementById("mega-servicios");
-  const megaNosotros  = document.getElementById("mega-nosotros");
-  function closeAll(){
-    megaServicios.classList.remove("open");
-    megaNosotros.classList.remove("open");
-  }
-  document.getElementById("btnServicios").addEventListener("click", ()=>{
-    const open = megaServicios.classList.contains("open");
-    closeAll();
-    if(!open) megaServicios.classList.add("open");
-  });
-  document.getElementById("btnNosotros").addEventListener("click", ()=>{
-    const open = megaNosotros.classList.contains("open");
-    closeAll();
-    if(!open) megaNosotros.classList.add("open");
-  });
-
-  // Cerrar al hacer click fuera del header
-  document.addEventListener("click", (e)=>{
-    if(!e.target.closest("header")) closeAll();
-  });
-
-  // Cerrar al elegir opción del menú
-  document.querySelectorAll("[data-close]").forEach(a=>{
-    a.addEventListener("click", ()=>closeAll());
-  });
-
-  // Slider
-  const slides = Array.from(document.querySelectorAll(".slide"));
-  const dots = Array.from(document.querySelectorAll(".dot"));
-  let idx = 0;
-
-  function show(i){
-    idx = (i + slides.length) % slides.length;
-    slides.forEach((s,k)=>s.classList.toggle("active", k===idx));
-    dots.forEach((d,k)=>d.classList.toggle("active", k===idx));
-  }
-  document.getElementById("prev").addEventListener("click", ()=>show(idx-1));
-  document.getElementById("next").addEventListener("click", ()=>show(idx+1));
-  dots.forEach(d=>d.addEventListener("click", ()=>show(parseInt(d.getAttribute("data-dot"),10))));
-  setInterval(()=>show(idx+1), 7000);
-</script>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>

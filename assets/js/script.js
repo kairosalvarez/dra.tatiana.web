@@ -7,32 +7,70 @@
   // Catálogo (3 servicios por categoría, tipo Chevrolet)
   // IMÁGENES: puedes usar por ahora las 3 que ya tienes en Portada.
   // Luego, si quieres, creamos imágenes específicas por servicio y solo cambias el src.
-  const CATALOG = {
-    especializados: {
-      label: "Especializados",
-      items: [
-        { name: "Endolifting (Abdominal)", desc: "Tensado y mejora del contorno abdominal con enfoque médico.", img: "assets/Portada/endolifting.png" }, // PDF: Endolifting:contentReference[oaicite:5]{index=5}
-        { name: "Lipopapada", desc: "Perfilado y armonización del contorno submentoniano (según valoración).", img: "assets/Portada/facial.png" }, // PDF: Lipopapada:contentReference[oaicite:6]{index=6}
-        { name: "Adiposidad localizada y celulitis", desc: "Protocolos orientados a reducción localizada y mejoría de textura (según valoración).", img: "assets/Portada/piel.png" } // PDF: Adiposidad localizada y celulitis:contentReference[oaicite:7]{index=7}
-      ]
-    },
-    sueroterapia: {
-      label: "Sueroterapia",
-      items: [
-        { name: "Suero reparador", desc: "Apoyo revitalizante (según necesidad clínica).", img: "assets/Portada/piel.png" }, // PDF:contentReference[oaicite:8]{index=8}
-        { name: "Suero energizante", desc: "Apoyo para vitalidad y bienestar (según valoración).", img: "assets/Portada/endolifting.png" }, // PDF:contentReference[oaicite:9]{index=9}
-        { name: "Suero desintoxicante", desc: "Acompañamiento detox con enfoque médico (según valoración).", img: "assets/Portada/facial.png" } // PDF:contentReference[oaicite:10]{index=10}
-      ]
-    },
-    rejuvenecimiento: {
-      label: "Rejuvenecimiento & Botox",
-      items: [
-        { name: "Rejuvenecimiento facial no quirúrgico", desc: "Opciones para refrescar el rostro sin cirugía (según valoración).", img: "assets/Portada/facial.png" }, // PDF:contentReference[oaicite:11]{index=11}
-        { name: "Botox: tercio superior", desc: "Tratamiento de tercio superior (según valoración).", img: "assets/Portada/piel.png" }, // PDF:contentReference[oaicite:12]{index=12}
-        { name: "Botox: tercio inferior", desc: "Tratamiento de tercio inferior (según valoración).", img: "assets/Portada/endolifting.png" } // PDF:contentReference[oaicite:13]{index=13}
-      ]
-    }
-  };
+ const CATALOG = {
+  especializados: {
+    label: "Especializados",
+    items: [
+      {
+        name: "Endolifting (Abdominal)",
+        desc: "Tensado y mejora del contorno abdominal con enfoque médico.",
+        img: "assets/Portada/endolifting.png" // TU imagen
+      },
+      {
+        name: "Lipopapada",
+        desc: "Perfilado del contorno submentoniano tras valoración.",
+        img: "https://images.unsplash.com/photo-1598449426314-8b02525e8733?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Adiposidad localizada y celulitis",
+        desc: "Protocolos orientados a reducción localizada y mejora de textura.",
+        img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1200&q=80"
+      }
+    ]
+  },
+
+  sueroterapia: {
+    label: "Sueroterapia",
+    items: [
+      {
+        name: "Suero reparador",
+        desc: "Apoyo revitalizante según necesidad clínica.",
+        img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Suero energizante",
+        desc: "Vitalidad y bienestar integral.",
+        img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Suero desintoxicante",
+        desc: "Acompañamiento detox con enfoque médico.",
+        img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
+      }
+    ]
+  },
+
+  rejuvenecimiento: {
+    label: "Rejuvenecimiento & Botox",
+    items: [
+      {
+        name: "Rejuvenecimiento facial no quirúrgico",
+        desc: "Opciones para refrescar el rostro sin cirugía.",
+        img: "assets/Portada/facial.png" // TU imagen
+      },
+      {
+        name: "Botox – tercio superior",
+        desc: "Tratamiento del tercio superior tras valoración.",
+        img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Botox – tercio inferior",
+        desc: "Tratamiento del tercio inferior tras valoración.",
+        img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=80"
+      }
+    ]
+  }
+};
 
   const tabsEl = document.getElementById("catalogTabs");
   const imgEl  = document.getElementById("catImg");

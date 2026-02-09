@@ -1,83 +1,109 @@
-<script>
-  // WhatsApp (usa el mismo que ya tienes)
-  const phone = "573015058597";
-  const msg = encodeURIComponent("Hola, quisiera agendar una valoración con la Dra. Tatiana Mendoza. ¿Me brindan información, por favor?");
-  const wa = `https://wa.me/${phone}?text=${msg}`;
+// =======================
+// WhatsApp
+// =======================
+const phone = "573015058597";
+const msg = encodeURIComponent("Hola, quisiera agendar una valoración con la Dra. Tatiana Mendoza. ¿Me brindan información, por favor?");
+const wa = `https://wa.me/${phone}?text=${msg}`;
 
-  // Catálogo (3 servicios por categoría, tipo Chevrolet)
-  // IMÁGENES: puedes usar por ahora las 3 que ya tienes en Portada.
-  // Luego, si quieres, creamos imágenes específicas por servicio y solo cambias el src.
- const CATALOG = {
-  especializados: {
-    label: "Especializados",
-    items: [
-      {
-        name: "Endolifting (Abdominal)",
-        desc: "Tensado y mejora del contorno abdominal con enfoque médico.",
-        img: "assets/Portada/endolifting.png" // TU imagen
-      },
-      {
-        name: "Lipopapada",
-        desc: "Perfilado del contorno submentoniano tras valoración.",
-        img: "https://images.unsplash.com/photo-1598449426314-8b02525e8733?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        name: "Adiposidad localizada y celulitis",
-        desc: "Protocolos orientados a reducción localizada y mejora de textura.",
-        img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1200&q=80"
-      }
-    ]
-  },
+// =======================
+// Slider HERO
+// =======================
+const slides = Array.from(document.querySelectorAll(".slide"));
+const dots = Array.from(document.querySelectorAll(".dot"));
+let heroIdx = 0;
 
-  sueroterapia: {
-    label: "Sueroterapia",
-    items: [
-      {
-        name: "Suero reparador",
-        desc: "Apoyo revitalizante según necesidad clínica.",
-        img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        name: "Suero energizante",
-        desc: "Vitalidad y bienestar integral.",
-        img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        name: "Suero desintoxicante",
-        desc: "Acompañamiento detox con enfoque médico.",
-        img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
-      }
-    ]
-  },
+function heroShow(i){
+  heroIdx = (i + slides.length) % slides.length;
+  slides.forEach((s,k)=>s.classList.toggle("active", k===heroIdx));
+  dots.forEach((d,k)=>d.classList.toggle("active", k===heroIdx));
+}
+document.getElementById("prev")?.addEventListener("click", ()=>heroShow(heroIdx-1));
+document.getElementById("next")?.addEventListener("click", ()=>heroShow(heroIdx+1));
+dots.forEach(d=>d.addEventListener("click", ()=>heroShow(parseInt(d.getAttribute("data-dot"),10))));
+setInterval(()=>heroShow(heroIdx+1), 7000);
 
-  rejuvenecimiento: {
-    label: "Rejuvenecimiento & Botox",
-    items: [
-      {
-        name: "Rejuvenecimiento facial no quirúrgico",
-        desc: "Opciones para refrescar el rostro sin cirugía.",
-        img: "assets/Portada/facial.png" // TU imagen
-      },
-      {
-        name: "Botox – tercio superior",
-        desc: "Tratamiento del tercio superior tras valoración.",
-        img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        name: "Botox – tercio inferior",
-        desc: "Tratamiento del tercio inferior tras valoración.",
-        img: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=80"
-      }
-    ]
-  }
-};
+// =======================
+// Mega menús
+// =======================
+const megaServicios = document.getElementById("mega-servicios");
+const megaNosotros  = document.getElementById("mega-nosotros");
 
-  const tabsEl = document.getElementById("catalogTabs");
-  const imgEl  = document.getElementById("catImg");
-  const nameEl = document.getElementById("catName");
-  const descEl = document.getElementById("catDesc");
-  const bookEl = document.getElementById("catBook");
-  const moreEl = document.getElementById("catMore");
+function closeAll(){
+  megaServicios?.classList.remove("open");
+  megaNosotros?.classList.remove("open");
+}
+
+document.getElementById("btnServicios")?.addEventListener("click", ()=>{
+  const open = megaServicios?.classList.contains("open");
+  closeAll();
+  if(!open) megaServicios?.classList.add("open");
+});
+
+document.getElementById("btnNosotros")?.addEventListener("click", ()=>{
+  const open = megaNosotros?.classList.contains("open");
+  closeAll();
+  if(!open) megaNosotros?.classList.add("open");
+});
+
+document.addEventListener("click", (e)=>{
+  if(!e.target.closest("header")) closeAll();
+});
+document.querySelectorAll("[data-close]").forEach(a=>{
+  a.addEventListener("click", ()=>closeAll());
+});
+
+// =======================
+// WhatsApp botones
+// =======================
+document.getElementById("ctaTop")?.addEventListener("click", ()=>window.open(wa,"_blank"));
+document.getElementById("ctaBottom")?.addEventListener("click", ()=>window.open(wa,"_blank"));
+document.getElementById("waFloat")?.addEventListener("click", ()=>window.open(wa,"_blank"));
+
+document.getElementById("ctaHero1")?.setAttribute("href", wa);
+document.getElementById("ctaHero2")?.setAttribute("href", wa);
+document.getElementById("ctaHero3")?.setAttribute("href", wa);
+
+// =======================
+// Catálogo tipo Chevrolet (tabs + 3 servicios + flechas)
+// =======================
+document.addEventListener("DOMContentLoaded", () => {
+  const tabsEl = document.getElementById("chevyTabs");
+  const imgEl  = document.getElementById("svcImg");
+  const nameEl = document.getElementById("svcName");
+  const descEl = document.getElementById("svcDesc");
+  const moreEl = document.getElementById("svcMore");
+
+  if (!tabsEl || !imgEl || !nameEl || !descEl) return;
+
+  // Imágenes genéricas GRATIS (siempre devuelve imagen)
+  const U = (q) => `https://source.unsplash.com/1600x900/?${encodeURIComponent(q)}`;
+
+  const CATALOG = {
+    especializados: {
+      label: "Especializados",
+      items: [
+        { name: "Endolifting (Abdominal)", desc: "Tensado y mejora del contorno abdominal con enfoque médico.", img: "assets/Portada/endolifting.png" },
+        { name: "Lipopapada", desc: "Perfilado del contorno submentoniano tras valoración.", img: U("jawline,beauty,clinic,white") },
+        { name: "Adiposidad localizada y celulitis", desc: "Protocolos para reducción localizada y mejoría de textura.", img: U("body,wellness,spa,white") },
+      ]
+    },
+    sueroterapia: {
+      label: "Sueroterapia",
+      items: [
+        { name: "Suero reparador", desc: "Apoyo revitalizante según necesidad clínica.", img: U("vitamin,wellness,clinic,white") },
+        { name: "Suero energizante", desc: "Vitalidad y bienestar integral.", img: U("energy,wellness,clinic,white") },
+        { name: "Suero desintoxicante", desc: "Acompañamiento detox con enfoque médico.", img: U("detox,wellness,clinic,white") },
+      ]
+    },
+    facial: {
+      label: "Faciales",
+      items: [
+        { name: "Armonización facial", desc: "Resultados naturales con protocolos personalizados.", img: "assets/Portada/facial.png" },
+        { name: "Rejuvenecimiento no quirúrgico", desc: "Opciones para refrescar el rostro sin cirugía.", img: U("skin,beauty,clinic,white") },
+        { name: "Calidad de piel", desc: "Bioestimulación y regeneración para una piel luminosa.", img: "assets/Portada/piel.png" },
+      ]
+    }
+  };
 
   let currentCat = "especializados";
   let currentIdx = 0;
@@ -86,7 +112,7 @@
     tabsEl.innerHTML = "";
     Object.keys(CATALOG).forEach(key=>{
       const b = document.createElement("button");
-      b.className = "catalog-tab" + (key===currentCat ? " active" : "");
+      b.className = "chevyTab" + (key===currentCat ? " active" : "");
       b.textContent = CATALOG[key].label;
       b.addEventListener("click", ()=>{
         currentCat = key;
@@ -98,27 +124,39 @@
     });
   }
 
-  function renderCard(){
-    const item = CATALOG[currentCat].items[currentIdx];
-    imgEl.src = item.img;
-    imgEl.alt = item.name;
-    nameEl.textContent = item.name;
-    descEl.textContent = item.desc;
-    bookEl.href = wa;
-    moreEl.href = "#serviciosTop"; // si luego haces una página del servicio, aquí la linkeamos
+  function safeSetImage(src){
+    imgEl.onerror = () => {
+      imgEl.onerror = null;
+      imgEl.src = U("aesthetic,clinic,white");
+    };
+    imgEl.src = src;
   }
 
-  function next(){ currentIdx = (currentIdx + 1) % CATALOG[currentCat].items.length; renderCard(); }
-  function prev(){ currentIdx = (currentIdx - 1 + CATALOG[currentCat].items.length) % CATALOG[currentCat].items.length; renderCard(); }
+  function renderCard(){
+    const item = CATALOG[currentCat].items[currentIdx];
+    nameEl.textContent = item.name;
+    descEl.textContent = item.desc;
+    moreEl.href = "#serviciosTop";
+    safeSetImage(item.img);
+  }
 
-  const prevBtn = document.getElementById("catPrev");
-  const nextBtn = document.getElementById("catNext");
-  if(prevBtn) prevBtn.addEventListener("click", prev);
-  if(nextBtn) nextBtn.addEventListener("click", next);
+  function next(){
+    const len = CATALOG[currentCat].items.length;
+    currentIdx = (currentIdx + 1) % len;
+    renderCard();
+  }
+  function prev(){
+    const len = CATALOG[currentCat].items.length;
+    currentIdx = (currentIdx - 1 + len) % len;
+    renderCard();
+  }
+
+  document.getElementById("svcNext")?.addEventListener("click", next);
+  document.getElementById("svcPrev")?.addEventListener("click", prev);
 
   // Desde el mega menú: data-open="categoria:indice"
   document.querySelectorAll("[data-open]").forEach(a=>{
-    a.addEventListener("click", (e)=>{
+    a.addEventListener("click", ()=>{
       const val = a.getAttribute("data-open");
       const [cat, idx] = val.split(":");
       if(CATALOG[cat]){
@@ -127,12 +165,10 @@
         renderTabs();
         renderCard();
       }
-      // baja al catálogo
-      const target = document.getElementById("catalogo");
-      if(target) target.scrollIntoView({behavior:"smooth", block:"start"});
+      document.getElementById("catalogo")?.scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 
   renderTabs();
   renderCard();
-</script>
+});

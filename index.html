@@ -334,25 +334,30 @@
   </div>
 
   <!-- Mega menú Servicios -->
-  <div class="mega" id="mega-servicios">
-    <div class="container mega-grid">
-      <div class="mega-col">
-        <h4>Servicio estrella</h4>
-        <a href="#servicios" data-close>Endolifting abdominal</a>
-        <a href="#servicios" data-close>Ver catálogo</a>
-      </div>
-      <div class="mega-col">
-        <h4>Facial</h4>
-        <a href="#servicios" data-close>Armonización facial</a>
-        <a href="#servicios" data-close>Rejuvenecimiento no quirúrgico</a>
-      </div>
-      <div class="mega-col">
-        <h4>Piel</h4>
-        <a href="#servicios" data-close>Bioestimulación</a>
-        <a href="#servicios" data-close>Calidad y bienestar de la piel</a>
-      </div>
+ <div class="mega" id="mega-servicios">
+  <div class="container mega-grid">
+    <div class="mega-col">
+      <h4>Especializados</h4>
+      <a href="#catalogo" data-open="especializados:0" data-close>Endolifting (Abdominal)</a>
+      <a href="#catalogo" data-open="especializados:1" data-close>Lipopapada</a>
+      <a href="#catalogo" data-open="especializados:2" data-close>Adiposidad localizada y celulitis</a>
+    </div>
+
+    <div class="mega-col">
+      <h4>Sueroterapia</h4>
+      <a href="#catalogo" data-open="sueroterapia:0" data-close>Suero reparador</a>
+      <a href="#catalogo" data-open="sueroterapia:1" data-close>Suero energizante</a>
+      <a href="#catalogo" data-open="sueroterapia:2" data-close>Suero desintoxicante</a>
+    </div>
+
+    <div class="mega-col">
+      <h4>Rejuvenecimiento & Botox</h4>
+      <a href="#catalogo" data-open="rejuvenecimiento:0" data-close>Rejuvenecimiento facial no quirúrgico</a>
+      <a href="#catalogo" data-open="rejuvenecimiento:1" data-close>Botox: tercio superior</a>
+      <a href="#catalogo" data-open="rejuvenecimiento:2" data-close>Botox: tercio inferior</a>
     </div>
   </div>
+</div>
 
   <!-- Mega menú Nosotros -->
   <div class="mega" id="mega-nosotros">
@@ -434,41 +439,41 @@
 
 <main>
   <!-- SERVICIOS -->
-  <section class="section" id="servicios">
-    <div class="container">
-      <h2>Servicios</h2>
-      <p>Catálogo sin precios. Endolifting abdominal es el servicio protagonista. La valoración previa define el plan recomendado.</p>
+<section class="catalog" id="catalogo">
+  <div class="container">
+    <h2 class="catalog-title">Tu belleza en nuestras manos</h2>
 
-      <div class="cards">
-        <article class="card">
-          <div class="thumb"><img src="assets/Portada/endolifting.png" alt="Endolifting"></div>
-          <div class="body">
-            <h3>Endolifting abdominal</h3>
-            <p>Tensado de piel y mejora del contorno (según valoración).</p>
-          </div>
-          <div class="foot"><span class="pill">Servicio estrella</span></div>
-        </article>
+    <!-- Tabs / Categorías -->
+    <div class="catalog-tabs" id="catalogTabs"></div>
 
-        <article class="card">
-          <div class="thumb"><img src="assets/Portada/facial.png" alt="Armonización facial"></div>
-          <div class="body">
-            <h3>Armonización facial</h3>
-            <p>Resultados naturales con protocolos personalizados.</p>
-          </div>
-          <div class="foot"><span class="pill">Facial</span></div>
-        </article>
+    <!-- Card principal tipo Chevrolet -->
+    <div class="catalog-stage">
+      <button class="catalog-arrow left" id="catPrev" aria-label="Anterior">‹</button>
 
-        <article class="card">
-          <div class="thumb"><img src="assets/Portada/piel.png" alt="Calidad de piel"></div>
-          <div class="body">
-            <h3>Calidad y bienestar de la piel</h3>
-            <p>Bioestimulación y regeneración con enfoque médico.</p>
+      <div class="catalog-card">
+        <div class="catalog-media">
+          <img id="catImg" src="" alt="Servicio" />
+          <div class="catalog-mask"></div>
+        </div>
+
+        <div class="catalog-info">
+          <h3 id="catName"></h3>
+          <p id="catDesc"></p>
+          <div class="catalog-actions">
+            <a class="catalog-btn primary" id="catMore" href="#serviciosTop">Más información</a>
+            <a class="catalog-btn secondary" id="catBook" href="#" target="_blank" rel="noopener">Agendar</a>
           </div>
-          <div class="foot"><span class="pill">Regenerativa</span></div>
-        </article>
+        </div>
       </div>
+
+      <button class="catalog-arrow right" id="catNext" aria-label="Siguiente">›</button>
     </div>
-  </section>
+
+    <p class="catalog-note">
+      * Los precios del portafolio no se muestran en la web. Los procedimientos se confirman tras valoración médica.
+    </p>
+  </div>
+</section>
 
   <!-- NOSOTROS -->
   <section class="section" id="nosotros">

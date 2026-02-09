@@ -1,158 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
   <title>Dra. Tatiana Mendoza | Medicina Estética & Regenerativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --gold:#C9A24D;
-      --gold-soft:#E8D8A8;
-      --text:#111;
-      --muted:#6b6b6b;
-      --line:rgba(0,0,0,.10);
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #111;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:#fff;
-      color:var(--text);
-      font-weight:300;
-    }
-    a{text-decoration:none;color:inherit}
-    .container{max-width:1200px;margin:0 auto;padding:0 16px}
-
-    /* HEADER */
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 0;
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:34px}
-    .brand .t strong{font-size:14px;font-weight:500}
-    .brand .t span{font-size:12px;color:var(--muted)}
-
-    .nav{display:flex;gap:12px;align-items:center}
-    .nav button{
-      background:none;border:none;
-      font-size:14px;font-weight:400;
-      color:var(--muted);
-      cursor:pointer;
-    }
-    .nav button:hover{color:var(--text)}
-    .cta{
-      padding:8px 16px;
-      border-radius:999px;
-      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
-      font-weight:600;
-      border:none;
-      cursor:pointer;
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      height:calc(100vh - 72px);
-      min-height:560px;
-      overflow:hidden;
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .hero-slide{
-      position:absolute;inset:0;
-      opacity:0;
-      transition:.4s ease;
-    }
-    .hero-slide.active{opacity:1}
 
-    .hero-slide img{
-      width:100%;height:100%;
-      object-fit:cover;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .hero-slide::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(
-        90deg,
-        rgba(0,0,0,.65) 0%,
-        rgba(0,0,0,.35) 45%,
-        rgba(0,0,0,.10) 70%,
-        rgba(0,0,0,0) 100%
+
+    .logo img {
+      height: 34px;
+    }
+
+    .logo span {
+      font-size: 13px;
+      color: #666;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #c9a24d;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0)
       );
     }
 
-    .hero-content{
-      position:relative;
-      height:100%;
-      display:flex;
-      align-items:center;
-    }
-    .hero-copy{
-      max-width:620px;
-      color:#fff;
-    }
-    .hero-copy h1{
-      font-size:54px;
-      line-height:1.05;
-      font-weight:500;
-      margin:0 0 14px;
-    }
-    .hero-copy p{
-      font-size:22px;
-      font-weight:300;
-      margin:0 0 24px;
-    }
-    .hero-btns{display:flex;gap:12px}
-    .hero-btn{
-      padding:14px 22px;
-      border-radius:12px;
-      border:none;
-      font-weight:600;
-      cursor:pointer;
-    }
-    .hero-btn.primary{background:#fff;color:#111}
-    .hero-btn.secondary{
-      background:transparent;
-      border:1px solid rgba(255,255,255,.5);
-      color:#fff;
+    .slide-content {
+      position: absolute;
+      left: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      max-width: 520px;
     }
 
-    .hero-dots{
-      position:absolute;bottom:18px;left:0;right:0;
-      display:flex;justify-content:center;gap:10px;
-    }
-    .hero-dot{
-      width:44px;height:4px;
-      border-radius:999px;
-      background:rgba(255,255,255,.35);
-      border:none;cursor:pointer;
-    }
-    .hero-dot.active{background:#fff}
-
-    /* WHATSAPP */
-    .wa{
-      position:fixed;right:16px;bottom:16px;
-      background:#25D366;color:#000;
-      padding:12px 14px;
-      border-radius:999px;
-      font-weight:700;border:none;
-      cursor:pointer;
+    .slide-content h1 {
+      font-size: 48px;
+      font-weight: 500;
+      margin: 0 0 12px;
     }
 
-    @media(max-width:768px){
-      .hero-copy h1{font-size:38px}
-      .hero-copy p{font-size:18px}
+    .slide-content p {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .slide-content .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .actions a {
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .secondary {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #fff;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 24px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 36px;
+      height: 4px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 99px;
+    }
+
+    .dot.active {
+      background: #fff;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: #000;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 100;
     }
   </style>
 </head>
@@ -160,97 +185,85 @@
 <body>
 
 <header>
-  <div class="container topbar">
-    <div class="brand">
+  <div class="header-inner">
+    <div class="logo">
       <img src="assets/logo.png" alt="Dra. Tatiana Mendoza">
-      <div class="t">
+      <span>
         <strong>Dra. Tatiana Mendoza</strong><br>
-        <span>Medicina Estética & Regenerativa</span>
-      </div>
+        Medicina Estética & Regenerativa
+      </span>
     </div>
-    <div class="nav">
-      <button>Servicios</button>
-      <button>Nosotros</button>
-      <button class="cta" id="ctaTop">Agenda</button>
-    </div>
+    <nav>
+      <a href="#">Servicios</a>
+      <a href="#">Nosotros</a>
+      <a href="#" class="btn">Agenda</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero">
 
-  <!-- Endolifting -->
-  <div class="hero-slide active">
+  <!-- SLIDE 1 -->
+  <div class="slide active">
     <img src="assets/Portada/endolifting.png" alt="Endolifting abdominal">
-    <div class="container hero-content">
-      <div class="hero-copy">
-        <h1>Endolifting abdominal</h1>
-        <p>Tensado de piel y mejora del contorno corporal con enfoque médico.</p>
-        <div class="hero-btns">
-          <button class="hero-btn primary">Saber más</button>
-          <button class="hero-btn secondary" id="cta1">Agendar</button>
-        </div>
+    <div class="slide-content">
+      <h1>Endolifting abdominal</h1>
+      <p>Tensado de piel y remodelación corporal con enfoque médico.</p>
+      <div class="actions">
+        <a href="#" class="primary">Saber más</a>
+        <a href="#" class="secondary">Agendar</a>
       </div>
     </div>
   </div>
 
-  <!-- Facial -->
-  <div class="hero-slide">
+  <!-- SLIDE 2 -->
+  <div class="slide">
     <img src="assets/Portada/facial.png" alt="Armonización facial">
-    <div class="container hero-content">
-      <div class="hero-copy">
-        <h1>Armonización facial</h1>
-        <p>Resultados naturales a través de protocolos personalizados.</p>
-        <div class="hero-btns">
-          <button class="hero-btn primary">Ver servicios</button>
-          <button class="hero-btn secondary" id="cta2">Agendar</button>
-        </div>
+    <div class="slide-content">
+      <h1>Armonización facial</h1>
+      <p>Protocolos orientados a resultados naturales tras valoración.</p>
+      <div class="actions">
+        <a href="#" class="primary">Ver servicios</a>
+        <a href="#" class="secondary">Agendar</a>
       </div>
     </div>
   </div>
 
-  <!-- Piel -->
-  <div class="hero-slide">
-    <img src="assets/Portada/piel.png" alt="Bienestar y calidad de la piel">
-    <div class="container hero-content">
-      <div class="hero-copy">
-        <h1>Calidad de piel</h1>
-        <p>Bioestimulación y regeneración para una piel sana y luminosa.</p>
-        <div class="hero-btns">
-          <button class="hero-btn primary">Explorar</button>
-          <button class="hero-btn secondary" id="cta3">Agendar</button>
-        </div>
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <img src="assets/Portada/piel.png" alt="Calidad de piel">
+    <div class="slide-content">
+      <h1>Calidad de piel</h1>
+      <p>Bioestimulación y regeneración con enfoque médico.</p>
+      <div class="actions">
+        <a href="#" class="primary">Explorar</a>
+        <a href="#" class="secondary">Agendar</a>
       </div>
     </div>
   </div>
 
-  <div class="hero-dots">
-    <button class="hero-dot active"></button>
-    <button class="hero-dot"></button>
-    <button class="hero-dot"></button>
+  <div class="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
   </div>
+
 </section>
 
-<button class="wa" id="wa">WhatsApp</button>
+<a class="whatsapp" href="https://wa.me/57XXXXXXXXXX" target="_blank">WhatsApp</a>
 
 <script>
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelectorAll('.hero-dot');
-  let i = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let index = 0;
 
-  setInterval(()=>{
-    slides[i].classList.remove('active');
-    dots[i].classList.remove('active');
-    i = (i + 1) % slides.length;
-    slides[i].classList.add('active');
-    dots[i].classList.add('active');
-  },7000);
-
-  const waLink = "https://wa.me/573015058597";
-  document.getElementById("wa").onclick = ()=>window.open(waLink);
-  document.getElementById("ctaTop").onclick = ()=>window.open(waLink);
-  document.getElementById("cta1").onclick = ()=>window.open(waLink);
-  document.getElementById("cta2").onclick = ()=>window.open(waLink);
-  document.getElementById("cta3").onclick = ()=>window.open(waLink);
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    dots[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }, 7000);
 </script>
 
 </body>
